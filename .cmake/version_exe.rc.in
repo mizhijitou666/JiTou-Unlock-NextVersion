@@ -1,0 +1,34 @@
+1 VERSIONINFO
+ FILEVERSION 1,0
+ PRODUCTVERSION 1,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "mizhijitou"
+            VALUE "FileDescription", "JiTou-Unlock"
+            VALUE "FileVersion", "1.0"
+            VALUE "InternalName", "JiTou-Unlock.exe"
+            VALUE "LegalCopyright", "Copyright (C) 2024 mizhijitou. All rights reserved."
+            VALUE "OriginalFilename", "JiTou-Unlock.exe"
+            VALUE "ProductName", "JiTou-Unlock"
+            VALUE "ProductVersion", "1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+IDI_ICON1 ICON DISCARDABLE "${CMAKE_SOURCE_DIR}/src/logo.ico"

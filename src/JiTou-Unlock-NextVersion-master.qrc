@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>App.qml</file>
+        <file>logo.ico</file>
+        <file>global/ItemsOriginal.qml</file>
+        <file>global/qmldir</file>
+        <file>page/T_Home.qml</file>
+        <file>global/ItemsFooter.qml</file>
+        <file>res/mizhijitou.jpg</file>
+        <file>page/T_Settings.qml</file>
+        <file>res/bg.png</file>
+        <file>res/LeminLimez.png</file>
+        <file>res/Avangelista.jpg</file>
+        <file>res/zhuzichu.png</file>
+        <file>page/T_Remove.qml</file>
+        <file>res/i4_logo.png</file>
+        <file>res/bilibili_logo.png</file>
+        <file>res/coolapk_logo.png</file>
+        <file>res/mizhijitou_qq.jpg</file>
+        <file>res/QQ_logo.png</file>
+        <file>res/mizhijitou_wechat.jpg</file>
+        <file>page/T_Apply.qml</file>
+        <file>res/iPhone_NoConntect.png</file>
+        <file>res/iPhone_Conntect.png</file>
+    </qresource>
+</RCC>
