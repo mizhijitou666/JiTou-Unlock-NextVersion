@@ -8,6 +8,7 @@
 #include "helper/SettingsHelper.h"
 #include "helper/LinkHelper.h"
 #include "helper/deviceLink.h"
+#include "helper/LogHelper.h"
 
 #ifdef FLUENTUI_BUILD_STATIC_LIB
 #  if (QT_VERSION > QT_VERSION_CHECK(6, 2, 0))
@@ -65,6 +66,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("LinkHelper", LinkHelper::getInstance());
     engine.rootContext()->setContextProperty("phoneInfoModel",&DeviceInfoModel);
     engine.rootContext()->setContextProperty("CurrentInfo", CurrentInfo::getInstance());
+    engine.rootContext()->setContextProperty("LogHelper", LogHelper::getInstance());
+    engine.rootContext()->setContextProperty("currentWorkspace", currentWorkspace::getInstance());
     const QUrl url(QStringLiteral("qrc:/App.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {

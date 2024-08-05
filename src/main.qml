@@ -30,12 +30,13 @@ FluWindow {
             pho_set.currentIndex = 0;
             Index =  pho_set.currentIndex;
             pho_set.displayText = phoneInfoModel.get(Index,1);
-            CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),available);
+            CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),available,phoneInfoModel.get_isSupport(Index))
+            currentWorkspace.q_setCurrentWorkspace(phoneInfoModel.get(Index,2))
         }
         else
         {
             pho_set.displayText = qsTr("No device")
-            CurrentInfo.set(qsTr("No device"),qsTr("No device"),"",available);
+            CurrentInfo.set(qsTr("No device"),qsTr("No device"),"",available,false);
         }
     }
     Flipable{
@@ -81,9 +82,8 @@ FluWindow {
                                 }
                                 onActivated: {
                                     var Index =  pho_set.currentIndex;
-                                    CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),true);
+                                    CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),true,phoneInfoModel.get_isSupport(Index))
                                 }
-
                             }
                             FluIconButton{
                                 id:fla_btn
@@ -121,7 +121,9 @@ FluWindow {
                                     id:version_text
                                     font.pixelSize: 10
                                     font.family: FluTextStyle.family
-                                    text: CurrentInfo.version
+                                    visible: CurrentInfo.isDeviceAvailable
+                                    textColor: CurrentInfo.isSupport ? "Green" : "Red"
+                                    text: CurrentInfo.isSupport ? CurrentInfo.version : qsTr("No Support iOS Version")
                                 }
                             }
                         }

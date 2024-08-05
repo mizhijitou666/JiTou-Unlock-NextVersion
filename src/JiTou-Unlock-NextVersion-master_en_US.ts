@@ -244,6 +244,17 @@ please contact the authors</source>
     </message>
 </context>
 <context>
+    <name>currentWorkspace</name>
+    <message>
+        <source>Create file success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create file fail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <source>JiTou-Unlock-NextVersion-master</source>
@@ -251,6 +262,10 @@ please contact the authors</source>
     </message>
     <message>
         <source>No device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Support iOS Version</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

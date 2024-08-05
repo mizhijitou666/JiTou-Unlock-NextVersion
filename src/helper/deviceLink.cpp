@@ -4,7 +4,9 @@
 #include <libimobiledevice/lockdown.h>
 #include <libimobiledevice/restore.h>
 #include <plist/plist.h>
-
+#include <QCoreApplication>
+#include "LogHelper.h"
+#include <QTranslator>
 
 DeviceInfoModel::DeviceInfoModel(QObject *parent)
 {
@@ -26,6 +28,7 @@ QHash<int,QByteArray> DeviceInfoModel::roleNames() const
     roles[UUIDRole] = "UUID_";
     roles[NameRole] = "Name_";
     roles[VersionRole] = "Version_";
+    roles[isSupportRole] = "isSupport_";
     return roles;
 }
 
@@ -46,17 +49,20 @@ QVariant DeviceInfoModel::data(const QModelIndex &index,int role) const
         return data.Name_;
     case VersionRole:
         return data.Version_;
+    case isSupportRole:
+        return data.isSupport_;
     default:
         return QVariant();
     }
 }
 
-void DeviceInfoModel::append(const QString &UUID,const QString &Name,const QString &Version)
+void DeviceInfoModel::append(const QString &UUID,const QString &Name,const QString &Version,const bool &isSupport)
 {
     DeviceInfo data;
     data.UUID_ = UUID;
     data.Name_ = Name;
     data.Version_ = Version;
+    data.isSupport_= isSupport;
 
     //更改数据之后需要通报一下QML，才能让数据实时刷新
 
@@ -98,6 +104,14 @@ QString DeviceInfoModel::get(int index,int type)
     default:
         return NULL;
     }
+}
+bool DeviceInfoModel::get_isSupport(int index)
+{
+    if(index < 0 || index >= dataList_.count())
+    {
+        return NULL;
+    }
+    return dataList_.at(index).isSupport_;
 }
 
 bool DeviceInfoModel::loadDevices(){
@@ -141,6 +155,7 @@ bool DeviceInfoModel::loadDevices(){
                         data.UUID_ = uuid;
                         data.Name_ = (device_name != nullptr) ? device_name : "";
                         data.Version_ = (device_version != nullptr) ? QString::fromStdString(Version(device_version).toString()) : "";
+                        data.isSupport_ = Version(device_version) >= Version(15) ? true : false ;
                         isDeviceAvailable = true;
                         emit beginInsertRows(QModelIndex(),dataList_.size(),dataList_.size());
                         dataList_.append(data);
@@ -179,16 +194,18 @@ CurrentInfo::CurrentInfo(QObject *parent) : QObject(parent) {
 
 CurrentInfo::~CurrentInfo() = default;
 
-void CurrentInfo::set(QString uuid,QString name,QString version,bool isDeviceAvailable)
+void CurrentInfo::set(QString uuid,QString name,QString version,bool isDeviceAvailable,bool isSupport)
 {
     setuuid(uuid);
     setname(name);
     setversion(version);
     setisDeviceAvailable(isDeviceAvailable);
+    setisSupport(isSupport);
     emit uuidChanged();
     emit nameChanged();
     emit versionChanged();
     emit isDeviceAvailableChanged();
+    emit isSupportChanged();
 }
 const QString &CurrentInfo::uuid() const
 {
@@ -206,6 +223,10 @@ const bool &CurrentInfo::isDeviceAvailable() const
 {
     return m_isDeviceAvailable;
 }
+const bool &CurrentInfo::isSupport() const
+{
+    return m_isSupport;
+}
 
 void CurrentInfo::setuuid(QString uuid)
 {
@@ -222,4 +243,45 @@ void CurrentInfo::setversion(QString version)
 void CurrentInfo::setisDeviceAvailable(bool isDeviceAvailable)
 {
     this->m_isDeviceAvailable = isDeviceAvailable;
+}
+void CurrentInfo::setisSupport(bool isSupport)
+{
+    this->m_isSupport = isSupport;
+}
+
+
+
+
+currentWorkspace::currentWorkspace(QObject *parent) : QObject(parent) {
+}
+
+currentWorkspace::~currentWorkspace() = default;
+
+void currentWorkspace::setCurrentWorkspace(QString str)
+{
+    this->Workspace = str;
+}
+
+void currentWorkspace::configureWorkspace(QString uuid)
+{
+    // Get the destination directory path
+    auto workspaceDir = QCoreApplication::applicationDirPath() + "/JiTou/Workspace/" + uuid;
+    // Set the source directory path (assuming it's located in the binary directory)
+    auto sourceDir = QCoreApplication::applicationDirPath() + "/files";
+
+    if (Utils::copyDirectory(sourceDir, workspaceDir))
+    {
+       LogHelper::getInstance()->addlog(tr("Create file success")); // fix this idk
+    }
+    else
+    {
+        LogHelper::getInstance()->addlog(tr("Create file fail"));
+    }
+
+    setCurrentWorkspace(workspaceDir);
+}
+
+void currentWorkspace::q_setCurrentWorkspace(QString uuid)
+{
+    configureWorkspace(uuid);
 }

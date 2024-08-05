@@ -69,7 +69,7 @@ FluScrollablePage {
                         width: scrollview.width
                         wrapMode: Text.WrapAnywhere
                         padding: 14
-                        text:""
+                        text:LogHelper.log
                         }
                     }
                 }

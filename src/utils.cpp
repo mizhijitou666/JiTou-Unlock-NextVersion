@@ -8,6 +8,11 @@
 #include <zlib.h>
 
 bool Utils::copyDirectory(QString source, QString dest) {
+    QFileInfo fileInfo(source);
+    if(!fileInfo.isDir())
+    {
+        return false;
+    }
     QDir().mkpath(dest);
 
     auto iterator = QDirIterator(source, QDir::AllEntries | QDir::Hidden | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
@@ -25,11 +30,11 @@ bool Utils::copyDirectory(QString source, QString dest) {
         // Copy the file or directory
         if (iterator.fileInfo().isFile()) {
             if (!QFile::copy(sourceFilePath, destinationFilePath)) {
-                //                return false;
+                               return false;
             }
         } else if (iterator.fileInfo().isDir()) {
             if (!QDir().mkdir(destinationFilePath)) {
-                //                return false;
+                                return false;
             }
         }
     }

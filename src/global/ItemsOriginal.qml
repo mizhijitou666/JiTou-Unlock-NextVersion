@@ -27,7 +27,7 @@ FluObject{
         title: qsTr("Remove the pairing restriction")
         icon: FluentIcons.Unlock
         url: "qrc:/page/T_Remove.qml"
-        disabled: !CurrentInfo.isDeviceAvailable
+        disabled: !CurrentInfo.isSupport
         onTap: {
             navigationView.push(url)
         }
@@ -43,7 +43,7 @@ FluObject{
         title: qsTr("Apply")
         icon: FluentIcons.CheckboxComposite
         url: "qrc:/page/T_Apply.qml"
-        disabled: !CurrentInfo.isDeviceAvailable
+        disabled: !CurrentInfo.isSupport
         onTap: {
             navigationView.push(url)
         }

@@ -80,6 +80,8 @@ else ()
             helper/LinkHelper.cpp
             helper/deviceLink.h
             helper/deviceLink.cpp
+            helper/LogHelper.h
+            helper/LogHelper.cpp
 
     )
 endif ()
