@@ -58,7 +58,7 @@ public:
     }
 
     std::string toString() const {
-        return std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(patch);
+        return std::to_string(major) + "." + std::to_string(minor);
     }
 
     bool operator<(const Version& other) const {

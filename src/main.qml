@@ -22,6 +22,22 @@ FluWindow {
             showStayTop: false
             z:7
         }
+    function getdecive(pho_set) {
+        var available = phoneInfoModel.loadDevices();// function body
+        var Index =  pho_set.currentIndex
+        if(available)
+        {
+            pho_set.currentIndex = 0;
+            Index =  pho_set.currentIndex;
+            pho_set.displayText = phoneInfoModel.get(Index,1);
+            CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),available);
+        }
+        else
+        {
+            pho_set.displayText = qsTr("No device")
+            CurrentInfo.set(qsTr("No device"),qsTr("No device"),"",available);
+        }
+    }
     Flipable{
         id:flipable
         anchors.fill: parent
@@ -53,15 +69,21 @@ FluWindow {
                         Row{
                             spacing: 10
                             FluComboBox{
+                                textRole:"Name_"
                                 id:pho_set
                                 width: 240
                                 height:35
                                 editable: false
-                                disabled:  true
-                                model: ListModel {
-                                    id: phone_select
-                                    ListElement { text: qsTr("No devcie") }
+                                disabled: !CurrentInfo.isDeviceAvailable
+                                model: phoneInfoModel
+                                Component.onCompleted: {
+                                    getdecive(pho_set)
                                 }
+                                onActivated: {
+                                    var Index =  pho_set.currentIndex;
+                                    CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),true);
+                                }
+
                             }
                             FluIconButton{
                                 id:fla_btn
@@ -69,7 +91,7 @@ FluWindow {
                                 height:35
                                 iconSource:FluentIcons.Refresh
                                 onClicked: {
-
+                                    getdecive(pho_set)
                                 }
                             }
                         }
@@ -80,7 +102,7 @@ FluWindow {
                                 id:iPh_pic
                                 width: 64
                                 height:100
-                                source: "qrc:/res/iPhone_Conntect.png"
+                                source: CurrentInfo.isDeviceAvailable ? "qrc:/res/iPhone_Conntect.png" : "qrc:/res/iPhone_NoConntect.png"
 
                             }
                             Column{
@@ -88,18 +110,18 @@ FluWindow {
                                 spacing: 10
                                 FluText{
                                     font: FluTextStyle.BodyStrong
-                                    text: qsTr("No devcie")
+                                    text: CurrentInfo.name
                                 }
                                 FluText{
                                     font.pixelSize: 10
                                     font.family: FluTextStyle.family
-                                    text: "123"
+                                    text: CurrentInfo.uuid
                                 }
                                 FluText{
                                     id:version_text
                                     font.pixelSize: 10
                                     font.family: FluTextStyle.family
-                                    text: "版本"
+                                    text: CurrentInfo.version
                                 }
                             }
                         }
@@ -115,5 +137,4 @@ FluWindow {
             }
         }
     }
-
 }

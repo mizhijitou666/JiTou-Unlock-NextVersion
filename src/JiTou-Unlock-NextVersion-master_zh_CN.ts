@@ -268,7 +268,7 @@ please contact the authors</source>
         <translation type="unfinished">JiTou-Unlock</translation>
     </message>
     <message>
-        <source>No devcie</source>
+        <source>No device</source>
         <translation type="unfinished">没有设备连接</translation>
     </message>
 </context>

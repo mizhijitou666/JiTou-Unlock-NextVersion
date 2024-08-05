@@ -78,6 +78,9 @@ else ()
             utils.h
             helper/LinkHelper.h
             helper/LinkHelper.cpp
+            helper/deviceLink.h
+            helper/deviceLink.cpp
+
     )
 endif ()
 

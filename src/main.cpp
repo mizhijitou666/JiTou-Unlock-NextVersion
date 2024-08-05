@@ -7,6 +7,7 @@
 #include <QQmlContext>
 #include "helper/SettingsHelper.h"
 #include "helper/LinkHelper.h"
+#include "helper/deviceLink.h"
 
 #ifdef FLUENTUI_BUILD_STATIC_LIB
 #  if (QT_VERSION > QT_VERSION_CHECK(6, 2, 0))
@@ -38,7 +39,6 @@ int main(int argc, char *argv[])
     QApplication::setApplicationDisplayName("JiTou-Unlock");
     QApplication::setApplicationVersion(APPLICATION_VERSION);
     SettingsHelper::getInstance()->init(argv);
-    //LinkHelper::getInstance()->init(argv);
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -59,8 +59,12 @@ int main(int argc, char *argv[])
         }
     }
     QQmlApplicationEngine engine;
+    DeviceInfoModel DeviceInfoModel;
+
     engine.rootContext()->setContextProperty("SettingsHelper", SettingsHelper::getInstance());
     engine.rootContext()->setContextProperty("LinkHelper", LinkHelper::getInstance());
+    engine.rootContext()->setContextProperty("phoneInfoModel",&DeviceInfoModel);
+    engine.rootContext()->setContextProperty("CurrentInfo", CurrentInfo::getInstance());
     const QUrl url(QStringLiteral("qrc:/App.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {

@@ -1,6 +1,4 @@
 #include "utils.h"
-#include "qpainter.h"
-#include "qpainterpath.h"
 #include <QDirIterator>
 #include <QFileInfo>
 #include <QFile>
