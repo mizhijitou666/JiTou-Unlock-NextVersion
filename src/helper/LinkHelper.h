@@ -18,4 +18,6 @@ public:
     ~LinkHelper() override;
     void init(char *argv[]);
     Q_INVOKABLE int getPlistValue_Link (int get_index);
+    Q_INVOKABLE void set_maxPlistValue(const QString &text);
+    Q_INVOKABLE void set_skipSetup(bool checked);
 };

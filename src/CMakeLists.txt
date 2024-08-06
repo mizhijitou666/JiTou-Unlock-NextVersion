@@ -72,8 +72,8 @@ else ()
             plistmanager.cpp plistmanager.h
             helper/SettingsHelper.cpp helper/SettingsHelper.h
             singleton.h
-            devicemanager.cpp
-            devicemanager.h
+
+
             utils.cpp
             utils.h
             helper/LinkHelper.h
@@ -82,6 +82,7 @@ else ()
             helper/deviceLink.cpp
             helper/LogHelper.h
             helper/LogHelper.cpp
+            CreateBackup.cpp CreateBackup.h
 
     )
 endif ()

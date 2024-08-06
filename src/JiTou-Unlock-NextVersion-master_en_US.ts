@@ -24,6 +24,64 @@
     </message>
 </context>
 <context>
+    <name>LinkHelper</name>
+    <message>
+        <source>read max_value plist fail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>save max_value plist fail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Failed to open file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to open source file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create destination file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create directory:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to remove directory:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create output file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create Info.plist file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create Status.plist file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to create Manifest.plist file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to open output file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>T_Apply</name>
     <message>
         <source>Apply</source>
@@ -51,10 +109,6 @@
     </message>
     <message>
         <source>Modified Tweaks:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>testtesttest!!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -251,6 +305,52 @@ please contact the authors</source>
     </message>
     <message>
         <source>Create file fail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Coping the modify file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create restore workspace success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create restore workspace fail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restoring modify file to the device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error!! Please Close &quot;Find my iphone&quot;!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error!! Please Remove All your MDM File!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error!! NOT Support For below iOS 15.2!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BIG Successful 
+ Your Device will be restart after a min 
+ Dont worry it will be fine after restart!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fail to CreateBackup file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Workspace Change to </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Writing modify file to the device</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

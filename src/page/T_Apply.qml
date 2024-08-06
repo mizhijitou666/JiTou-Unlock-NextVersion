@@ -30,12 +30,16 @@ FluScrollablePage {
             text:qsTr("Modified Tweaks:")
         }
         FluText{
-            text:qsTr("testtesttest!!")
+            textColor: "green"
+            text:currentWorkspace.q_getEnabledTweaks() + (!LinkHelper.getPlistValue_Link(1) ? "\n卡IPCC" : "")
         }
         FluLoadingButton{
             text:qsTr("Apply Tweaks")
+            loading: currentWorkspace.isRunning
+            disabled:currentWorkspace.isRunning || !currentWorkspace.isWorkspace_make
             onClicked: {
-
+                currentWorkspace.applyTweaks(CurrentInfo.uuid);
+                currentWorkspace.isRunning = true;
             }
             anchors{
                 horizontalCenter:parent.horizontalCenter
@@ -53,16 +57,14 @@ FluScrollablePage {
                 clip: true
                 Flickable{
                     id:scrollview
-                    /*
-                    width: 670
-                    height: 240
-                    */
+                    width: 680
+                    height: 245
                     contentWidth: width
                     boundsBehavior: Flickable.StopAtBounds
                     contentHeight: text_info.height
                     ScrollBar.vertical: FluScrollBar {}
                     anchors{
-                        rightMargin: 10
+                        topMargin: 10
                     }
                     FluText{
                         id:text_info
@@ -70,6 +72,10 @@ FluScrollablePage {
                         wrapMode: Text.WrapAnywhere
                         padding: 14
                         text:LogHelper.log
+                        onTextChanged:
+                        {
+                            scrollview.ScrollBar.vertical.position = 1.0 - scrollview.ScrollBar.vertical.size
+                            }
                         }
                     }
                 }
@@ -83,8 +89,10 @@ FluScrollablePage {
             }
             FluFilledButton{
                 text:qsTr("Restore All Change")
+                disabled:currentWorkspace.isRunning || !currentWorkspace.isWorkspace_make
                 onClicked: {
-
+                    currentWorkspace.removeTweaks(CurrentInfo.uuid);
+                    currentWorkspace.isRunning = true;
                 }
             }
         }

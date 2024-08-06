@@ -43,11 +43,15 @@ FluScrollablePage {
                 height:30
                 text:"36"
                 maximumLength:2
+                disabled: !currentWorkspace.isWorkspace_make
                 validator: RegExpValidator {
                                 regExp: /^[0-9]+$/
                             }
                 anchors{
                     verticalCenter: parent.verticalCenter
+                }
+                onTextChanged:{
+                    LinkHelper.set_maxPlistValue(max_value.text)
                 }
             }
         }
@@ -62,10 +66,16 @@ FluScrollablePage {
             text: qsTr("If the IPCC cannot be locked after removing the option, or if a situation suggests a regulatory model\nplease contact the authors")
         }
         FluCheckBox{
+            id:skipsetup
+            checked:!LinkHelper.getPlistValue_Link(1)
+            disabled: !currentWorkspace.isWorkspace_make
             text:qsTr("I need to lock down the IPCC")
+            onClicked: {
+                        LinkHelper.set_skipSetup(!skipsetup.checked);
+                    }
         }
     }
     Component.onCompleted:{
-        max_value.text = LinkHelper.getPlistValue_Link(1)
+        max_value.text = LinkHelper.getPlistValue_Link(0)
     }
 }

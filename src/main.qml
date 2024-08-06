@@ -29,14 +29,14 @@ FluWindow {
         {
             pho_set.currentIndex = 0;
             Index =  pho_set.currentIndex;
-            pho_set.displayText = phoneInfoModel.get(Index,1);
             CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),available,phoneInfoModel.get_isSupport(Index))
-            currentWorkspace.q_setCurrentWorkspace(phoneInfoModel.get(Index,2))
+            currentWorkspace.q_setCurrentWorkspace(phoneInfoModel.get(Index,2));
+            currentWorkspace.resetCurrentDevice(available);
         }
         else
         {
-            pho_set.displayText = qsTr("No device")
             CurrentInfo.set(qsTr("No device"),qsTr("No device"),"",available,false);
+            currentWorkspace.resetCurrentDevice(available);
         }
     }
     Flipable{
@@ -75,14 +75,16 @@ FluWindow {
                                 width: 240
                                 height:35
                                 editable: false
-                                disabled: !CurrentInfo.isDeviceAvailable
+                                disabled: !CurrentInfo.isDeviceAvailable || currentWorkspace.isRunning
                                 model: phoneInfoModel
                                 Component.onCompleted: {
                                     getdecive(pho_set)
                                 }
                                 onActivated: {
                                     var Index =  pho_set.currentIndex;
-                                    CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),true,phoneInfoModel.get_isSupport(Index))
+                                    CurrentInfo.set(phoneInfoModel.get(Index,2),phoneInfoModel.get(Index,1),phoneInfoModel.get(Index,3),true,phoneInfoModel.get_isSupport(Index));
+                                    currentWorkspace.q_setCurrentWorkspace(phoneInfoModel.get(Index,2));
+                                    currentWorkspace.resetCurrentDevice(true);
                                 }
                             }
                             FluIconButton{
@@ -90,6 +92,7 @@ FluWindow {
                                 width: 35
                                 height:35
                                 iconSource:FluentIcons.Refresh
+                                disabled:currentWorkspace.isRunning
                                 onClicked: {
                                     getdecive(pho_set)
                                 }

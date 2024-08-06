@@ -27,8 +27,6 @@ public:
         switch (tweak) {
         case Tweak::SkipSetup:
             return {"SkipSetup", "跳过重启后出现的激活界面（推荐）"};
-        case Tweak::UnlockRestore:
-            return {"UnlockRestore", "恢复修改的文件"};
         case Tweak::AppleWatchUnlock:
             return {"AppleWatchUnlock", "配对版本限制解除"};
         default:

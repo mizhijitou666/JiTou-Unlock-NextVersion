@@ -7,6 +7,11 @@
 #include <QCoreApplication>
 #include "LogHelper.h"
 #include <QTranslator>
+#include <qdir.h>
+#include "CreateBackup.h"
+#include <QProcess>
+#include <QApplication>
+#include <synchapi.h>
 
 DeviceInfoModel::DeviceInfoModel(QObject *parent)
 {
@@ -250,8 +255,6 @@ void CurrentInfo::setisSupport(bool isSupport)
 }
 
 
-
-
 currentWorkspace::currentWorkspace(QObject *parent) : QObject(parent) {
 }
 
@@ -271,11 +274,14 @@ void currentWorkspace::configureWorkspace(QString uuid)
 
     if (Utils::copyDirectory(sourceDir, workspaceDir))
     {
-       LogHelper::getInstance()->addlog(tr("Create file success")); // fix this idk
+       LogHelper::getInstance()->addlog(tr("Create file success"));
+       LogHelper::getInstance()->addlog(tr("Workspace Change to ") + uuid);
+       currentWorkspace::getInstance()->set_isWorkspace_make(true);        // fix this idk
     }
     else
     {
         LogHelper::getInstance()->addlog(tr("Create file fail"));
+        currentWorkspace::getInstance()->set_isWorkspace_make(false);
     }
 
     setCurrentWorkspace(workspaceDir);
@@ -284,4 +290,213 @@ void currentWorkspace::configureWorkspace(QString uuid)
 void currentWorkspace::q_setCurrentWorkspace(QString uuid)
 {
     configureWorkspace(uuid);
+}
+
+const QString currentWorkspace::getCurrentWorkspace() const
+{
+    return this->Workspace;
+}
+
+const bool &currentWorkspace::isWorkspace_make() const
+{
+    return m_isWorkspace_make;
+}
+
+
+void currentWorkspace::set_isRunning(bool isRunning)
+{
+    this->m_isRunning = isRunning;
+    emit isRunning_Changed();
+}
+const bool &currentWorkspace::isRunning() const
+{
+    return m_isRunning;
+}
+
+
+void currentWorkspace::set_isWorkspace_make(bool isWorkspace_make)
+{
+    this->m_isWorkspace_make = isWorkspace_make;
+    emit isWorkspace_make_Changed();
+}
+void currentWorkspace::setTweakEnabled(Tweak t, bool enabled = true)
+{
+    if (enabled)
+    {
+        this->enabledTweaks.insert(t);
+    }
+    else
+    {
+        this->enabledTweaks.erase(t);
+    }
+}
+
+bool currentWorkspace::isTweakEnabled(Tweak t)
+{
+    return this->enabledTweaks.find(t) != this->enabledTweaks.end();
+}
+void currentWorkspace::resetCurrentDevice(bool device)
+{
+    if (!device || !m_isWorkspace_make)
+    {
+        this->m_isWorkspace_make = false;
+        this->enabledTweaks.clear();
+    }
+    else
+    {
+        this->enabledTweaks.clear();
+        this->enabledTweaks.insert(Tweak::SkipSetup);
+        this->enabledTweaks.insert(Tweak::AppleWatchUnlock);
+    }
+}
+
+std::vector<Tweak> currentWorkspace::getEnabledTweaks()
+{
+    auto tweaks = std::vector<Tweak>(this->enabledTweaks.begin(), this->enabledTweaks.end());
+
+    // Sort the vector based on the tweak description
+    std::sort(tweaks.begin(), tweaks.end(), [](auto a, auto b)
+              { return Tweaks::getTweakData(a).description < Tweaks::getTweakData(b).description; });
+
+    return tweaks;
+}
+
+QString currentWorkspace::q_getEnabledTweaks()
+{
+    auto labelText = std::string();
+    auto tweaks = getEnabledTweaks();
+    if (tweaks.empty())
+    {
+        labelText = "没有项目";
+    }
+    else
+    {
+        std::ostringstream labelTextStream;
+        bool firstTweak = true;
+        for (auto t : tweaks) {
+            if (!firstTweak) {
+                labelTextStream << "\n";
+            } else {
+                firstTweak = false;
+            }
+            labelTextStream << Tweaks::getTweakData(t).description;
+        }
+        labelText = labelTextStream.str();
+    }
+    return QString::fromStdString(labelText);
+}
+void currentWorkspace::removeTweaks(QString uuid) {
+    LogHelper::getInstance()->addlog(tr("Coping the modify file"));
+    auto sourceDir = QCoreApplication::applicationDirPath() + "/restore";
+    auto enabledTweaksDirectoryPath = QCoreApplication::applicationDirPath() + "/JiTou/EnabledTweaks";
+    auto enabledTweaksDirectory = QDir(enabledTweaksDirectoryPath);
+    if (enabledTweaksDirectory.exists())
+    {
+        enabledTweaksDirectory.removeRecursively();
+    }
+
+    if (Utils::copyDirectory(sourceDir, enabledTweaksDirectoryPath))
+    {
+        LogHelper::getInstance()->addlog(tr("Create restore workspace success"));// fix this idk
+    }
+    else
+    {
+        LogHelper::getInstance()->addlog(tr("Create restore workspace fail"));
+        return;
+    }
+
+    auto backupDirectoryPath = QCoreApplication::applicationDirPath() + "/JiTou/Backup";
+
+    auto success_Create = CreateBackup::createBackup(enabledTweaksDirectoryPath, backupDirectoryPath);
+    if (success_Create) {
+        //
+    } else {
+        LogHelper::getInstance()->addlog(tr("Fail to CreateBackup file"));
+        return;
+    }
+
+    LogHelper::getInstance()->addlog(tr("Restoring modify file to the device"));
+
+    restoreBackupToDevice(uuid, QCoreApplication::applicationDirPath().toStdString()+ "/JiTou");
+}
+
+void currentWorkspace::applyTweaks(QString uuid)
+{
+    auto workspace = currentWorkspace::getCurrentWorkspace();
+
+    // Erase backup folder
+    auto enabledTweaksDirectoryPath = QCoreApplication::applicationDirPath() + "/JiTou/EnabledTweaks";
+    auto enabledTweaksDirectory = QDir(enabledTweaksDirectoryPath);
+    if (enabledTweaksDirectory.exists())
+    {
+        enabledTweaksDirectory.removeRecursively();
+    }
+    LogHelper::getInstance()->addlog(tr("Coping the modify file"));
+    for (auto t : currentWorkspace::getEnabledTweaks())
+    {
+        auto folderName = Tweaks::getTweakData(t).folderName;
+        if (Utils::copyDirectory(workspace + "/" + QString::fromStdString(folderName), enabledTweaksDirectoryPath))
+        {
+            LogHelper::getInstance()->addlog(tr("Create restore workspace success"));// fix this idk
+        }
+        else
+        {
+            LogHelper::getInstance()->addlog(tr("Create restore workspace fail"));
+            return;
+        }
+    }
+
+    auto backupDirectoryPath = QCoreApplication::applicationDirPath() + "/JiTou/Backup";
+
+    auto success_Create = CreateBackup::createBackup(enabledTweaksDirectoryPath, backupDirectoryPath);
+    if (success_Create) {
+        //
+    } else {
+        LogHelper::getInstance()->addlog(tr("Fail to CreateBackup file"));
+        return;
+    }
+
+    LogHelper::getInstance()->addlog(tr("Writing modify file to the device"));
+
+    restoreBackupToDevice(uuid, QCoreApplication::applicationDirPath().toStdString()+ "/JiTou");
+}
+
+void currentWorkspace::restoreBackupToDevice(QString uuid, const std::string & backupDirectory)
+{
+    QStringList arguments;
+    arguments << "-u" << uuid << "-s" << "Backup" << "restore" << "--system" << "--skip-apps" << QString::fromStdString(backupDirectory);
+    QProcess *process = new QProcess(this);
+    process->start("idevicebackup2.exe", arguments);
+    process->waitForStarted();
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+            [process, this](int exitCode, QProcess::ExitStatus exitStatus){
+                Q_UNUSED(exitCode);
+                Q_UNUSED(exitStatus);
+                process->close();
+                process->kill();
+                process->deleteLater();
+                this->set_isRunning(false);
+            });
+    connect(process,&QProcess::readyRead,this,[process](){
+        QString output = process->readAllStandardOutput();
+        QString errorOutput = process->readAllStandardError();
+        LogHelper::getInstance()->addlog(output);
+        LogHelper::getInstance()->addlog(errorOutput);
+        if(output.contains("Code 211"))
+        {
+            LogHelper::getInstance()->addlog(tr("Error!! Please Close \"Find my iphone\"!!"));
+        }
+        else if (output.contains("Code 1"))
+        {
+            LogHelper::getInstance()->addlog(tr("Error!! Please Remove All your MDM File!!"));
+        }
+        else if (output.contains("Code 205"))
+        {
+            LogHelper::getInstance()->addlog(tr("Error!! NOT Support For below iOS 15.2!!"));
+        }
+        else if (output.contains("Restore Successful"))
+        {
+            LogHelper::getInstance()->addlog(tr("BIG Successful \n Your Device will be restart after a min \n Dont worry it will be fine after restart!"));
+        }
+    });
 }

@@ -17,7 +17,7 @@
         <translation type="unfinished">首页</translation>
     </message>
     <message>
-        <location filename="global/ItemsOriginal.qml" line="27"/>
+        <location filename="global/ItemsOriginal.qml" line="28"/>
         <source>Remove the pairing restriction</source>
         <translation type="unfinished">移除配对限制</translation>
     </message>
@@ -26,9 +26,80 @@
         <translation type="obsolete">广告去无踪</translation>
     </message>
     <message>
-        <location filename="global/ItemsOriginal.qml" line="43"/>
+        <location filename="global/ItemsOriginal.qml" line="44"/>
         <source>Apply</source>
         <translation type="unfinished">应用</translation>
+    </message>
+</context>
+<context>
+    <name>LinkHelper</name>
+    <message>
+        <location filename="helper/LinkHelper.cpp" line="43"/>
+        <source>read max_value plist fail</source>
+        <translation type="unfinished">读取plist文件失败</translation>
+    </message>
+    <message>
+        <location filename="helper/LinkHelper.cpp" line="55"/>
+        <source>save max_value plist fail</source>
+        <translation type="unfinished">保存plist文件失败</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="CreateBackup.cpp" line="61"/>
+        <source>Failed to open file:</source>
+        <translation type="unfinished">打开以下文件失败:</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="110"/>
+        <source>Failed to open source file:</source>
+        <translation type="unfinished">打开源文件失败:</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="117"/>
+        <source>Failed to create destination file:</source>
+        <translation type="unfinished">创建目标文件失败</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="133"/>
+        <source>Failed to open output file</source>
+        <translation type="unfinished">打开输出文件失败</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="204"/>
+        <source>Failed to create directory.</source>
+        <translation type="unfinished">创建文件夹失败</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="210"/>
+        <source>Failed to create directory:</source>
+        <translation type="unfinished">创建以下目录失败:</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="228"/>
+        <source>Failed to remove directory:</source>
+        <translation type="unfinished">移除以下目录失败:</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="244"/>
+        <source>Failed to create output file</source>
+        <translation type="unfinished">创建输出文件失败</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="276"/>
+        <source>Failed to create Info.plist file</source>
+        <translation type="unfinished">创建Info.plist文件失败</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="306"/>
+        <source>Failed to create Status.plist file</source>
+        <translation type="unfinished">创建Status.plist文件失败</translation>
+    </message>
+    <message>
+        <location filename="CreateBackup.cpp" line="360"/>
+        <source>Failed to create Manifest.plist file</source>
+        <translation type="unfinished">创建Manifest.plist文件失败</translation>
     </message>
 </context>
 <context>
@@ -66,29 +137,24 @@
     <message>
         <location filename="page/T_Apply.qml" line="30"/>
         <source>Modified Tweaks:</source>
-        <translation type="unfinished">应用的修改</translation>
-    </message>
-    <message>
-        <location filename="page/T_Apply.qml" line="33"/>
-        <source>testtesttest!!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">应用的修改:</translation>
     </message>
     <message>
         <source></source>
         <translation></translation>
     </message>
     <message>
-        <location filename="page/T_Apply.qml" line="36"/>
+        <location filename="page/T_Apply.qml" line="37"/>
         <source>Apply Tweaks</source>
         <translation type="unfinished">应用破解</translation>
     </message>
     <message>
-        <location filename="page/T_Apply.qml" line="85"/>
+        <location filename="page/T_Apply.qml" line="91"/>
         <source>Restore All Change</source>
         <translation type="unfinished">恢复所有破解</translation>
     </message>
     <message>
-        <location filename="page/T_Apply.qml" line="79"/>
+        <location filename="page/T_Apply.qml" line="85"/>
         <source>If you&apos;re having trouble with your device</source>
         <translation type="unfinished">如果设备遇到问题：</translation>
     </message>
@@ -255,23 +321,23 @@ that prevents the default max value from pairing with the latest watchOS</source
         <translation type="unfinished">max值：</translation>
     </message>
     <message>
-        <location filename="page/T_Remove.qml" line="56"/>
+        <location filename="page/T_Remove.qml" line="60"/>
         <source>Some iPhone were unable to lock IPCC after using the tool (may have been fixed)</source>
         <translation type="unfinished">有锁机使用工具后出现无法卡IPCC的问题(可能已经修复)</translation>
     </message>
     <message>
-        <location filename="page/T_Remove.qml" line="62"/>
+        <location filename="page/T_Remove.qml" line="66"/>
         <source>If the IPCC cannot be locked after removing the option, or if a situation suggests a regulatory model
 please contact the authors</source>
         <translation type="unfinished">如果使用软件后还是无法卡IPCC或出现卡监管模式无法激活的情况请和作者联系</translation>
     </message>
     <message>
-        <location filename="page/T_Remove.qml" line="59"/>
+        <location filename="page/T_Remove.qml" line="63"/>
         <source>If you have a need to lock the IPCC please manually tick on the following options</source>
         <translation type="unfinished">如果你使用的是有锁机并有卡IPCC的需求请手动把下面的选项勾上</translation>
     </message>
     <message>
-        <location filename="page/T_Remove.qml" line="65"/>
+        <location filename="page/T_Remove.qml" line="72"/>
         <source>I need to lock down the IPCC</source>
         <translation type="unfinished">我需要卡IPCC功能！！</translation>
     </message>
@@ -317,14 +383,78 @@ please contact the authors</source>
 <context>
     <name>currentWorkspace</name>
     <message>
-        <location filename="helper/deviceLink.cpp" line="274"/>
+        <location filename="helper/deviceLink.cpp" line="277"/>
         <source>Create file success</source>
         <translation type="unfinished">创建文件夹成功</translation>
     </message>
     <message>
         <location filename="helper/deviceLink.cpp" line="278"/>
+        <source>Workspace Change to </source>
+        <translation type="unfinished">工作区已更改到 </translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="283"/>
         <source>Create file fail</source>
         <translation type="unfinished">创建文件夹失败</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="389"/>
+        <location filename="helper/deviceLink.cpp" line="434"/>
+        <source>Coping the modify file</source>
+        <translation type="unfinished">正在复制更改的文件</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="400"/>
+        <location filename="helper/deviceLink.cpp" line="440"/>
+        <source>Create restore workspace success</source>
+        <translation type="unfinished">创建恢复区文件成功</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="404"/>
+        <location filename="helper/deviceLink.cpp" line="444"/>
+        <source>Create restore workspace fail</source>
+        <translation type="unfinished">创建恢复区文件失败</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="414"/>
+        <location filename="helper/deviceLink.cpp" line="455"/>
+        <source>Fail to CreateBackup file</source>
+        <translation type="unfinished">创建还原区文件失败</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="418"/>
+        <source>Restoring modify file to the device</source>
+        <translation type="unfinished">正在写入修改后的文件</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="459"/>
+        <source>Writing modify file to the device</source>
+        <translation type="unfinished">正在写入修改后的文件</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="487"/>
+        <source>Error!! Please Close &quot;Find my iphone&quot;!!</source>
+        <translation type="unfinished">错误！！请关闭&quot;寻找我的iPhone功能后再试一次&quot;</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="491"/>
+        <source>Error!! Please Remove All your MDM File!!</source>
+        <translation type="unfinished">错误！！请移除所有文件后再试一次</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="495"/>
+        <source>Error!! NOT Support For below iOS 15.2!!</source>
+        <translation type="unfinished">错误！！不支持iOS15.2以下的设备</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="499"/>
+        <source>BIG Successful 
+ Your Device will be restart after a min 
+ Dont worry it will be fine after restart!</source>
+        <translation type="unfinished">大成功！！！
+哦耶恭喜你! 设备将会重启.
+如果输入密码后出现黑色的苹果加载界面不要害怕，稍等片刻后它就会消失!
+重要: 如果你进入系统发现是激活界面, 选择不传输APP和数据选项，很快你的设备就会回到主界面!</translation>
     </message>
 </context>
 <context>
@@ -336,12 +466,11 @@ please contact the authors</source>
     </message>
     <message>
         <location filename="main.qml" line="38"/>
-        <location filename="main.qml" line="39"/>
         <source>No device</source>
         <translation type="unfinished">没有设备连接</translation>
     </message>
     <message>
-        <location filename="main.qml" line="126"/>
+        <location filename="main.qml" line="129"/>
         <source>No Support iOS Version</source>
         <translation type="unfinished">不支持的iOS版本</translation>
     </message>

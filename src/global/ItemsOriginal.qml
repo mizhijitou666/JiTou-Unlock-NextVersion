@@ -12,6 +12,7 @@ FluObject{
         title: qsTr("Home")
         icon: FluentIcons.Home
         url: "qrc:/page/T_Home.qml"
+        disabled: currentWorkspace.isRunning
         onTap: {
             navigationView.push(url)
         }
@@ -27,7 +28,7 @@ FluObject{
         title: qsTr("Remove the pairing restriction")
         icon: FluentIcons.Unlock
         url: "qrc:/page/T_Remove.qml"
-        disabled: !CurrentInfo.isSupport
+        disabled: !CurrentInfo.isSupport || !currentWorkspace.isWorkspace_make || currentWorkspace.isRunning
         onTap: {
             navigationView.push(url)
         }

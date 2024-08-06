@@ -95,16 +95,42 @@ public:
 
 class currentWorkspace : public QObject{
     Q_OBJECT
+    Q_PROPERTY(bool isWorkspace_make READ isWorkspace_make
+                   WRITE set_isWorkspace_make NOTIFY isWorkspace_make_Changed)
+    Q_PROPERTY(bool isRunning READ isRunning
+                   WRITE set_isRunning NOTIFY isRunning_Changed)
 private:
     explicit currentWorkspace(QObject *parent = nullptr);
     std::unordered_set<Tweak> enabledTweaks;
     QString Workspace;
     void setCurrentWorkspace(QString);
     void configureWorkspace(QString);
+    bool m_isWorkspace_make;
+    bool m_isRunning = false;
+    void restoreBackupToDevice(const QString, const std::string &);
+
+signals:
+    void isWorkspace_make_Changed();
+    void isRunning_Changed();
+
 public:
     SINGLETON(currentWorkspace)
     ~currentWorkspace() override;
     void init(char *argv[]);
     Q_INVOKABLE void q_setCurrentWorkspace(QString uuid);
+    const QString getCurrentWorkspace() const;
+    const bool &isWorkspace_make() const;
+    void set_isWorkspace_make(bool isWorkspace_make);
+    const bool &isRunning() const;
+    void set_isRunning(bool isRunning);
+    void setTweakEnabled(Tweak t, bool);
+    bool isTweakEnabled(Tweak t);
+    Q_INVOKABLE void resetCurrentDevice(bool device);
+    std::vector<Tweak> getEnabledTweaks();
+    Q_INVOKABLE QString q_getEnabledTweaks();
+    Q_INVOKABLE void removeTweaks(QString uuid);
+    void slot_read();
+    Q_INVOKABLE void applyTweaks(QString uuid);
+
 };
 #endif
