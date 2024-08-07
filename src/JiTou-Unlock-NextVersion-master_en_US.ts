@@ -7,6 +7,10 @@
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Q&amp;A</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ItemsOriginal</name>
@@ -125,6 +129,45 @@
     </message>
     <message>
         <source>If you&apos;re having trouble with your device</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>T_Help</name>
+    <message>
+        <source>Q&amp;A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Q:if I still can&apos;t pair Watch after using the tool , What can I do ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1、You can try Higher max value
+2、You can try Del the watch backup
+Open Settings App on your iPhone
+Find General -&gt; Storage -&gt; Watch App -&gt; delete All watch backup then repair again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Q:It is any bugs ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sure Bugs include:
+1、Albums can&apos;t be synced(iOS15)
+2、Sleep data is not visible(iOS15)
+3、The new watch face is not visible on the iPhone APP
+4、Motion tracking and map navigation synchronization are not available
+5、Watch screenshots are not available(only iOSX no match Watch OSX)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Q:How can I reset my device ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can go to Apply page and Click the reset button</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -351,6 +394,10 @@ please contact the authors</source>
     </message>
     <message>
         <source>Writing modify file to the device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error!! need to enter Password and unlock your device</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

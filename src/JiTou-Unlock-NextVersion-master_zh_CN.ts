@@ -4,7 +4,12 @@
 <context>
     <name>ItemsFooter</name>
     <message>
-        <location filename="global/ItemsFooter.qml" line="15"/>
+        <location filename="global/ItemsFooter.qml" line="14"/>
+        <source>Q&amp;A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="global/ItemsFooter.qml" line="26"/>
         <source>Settings</source>
         <translation type="unfinished">设置</translation>
     </message>
@@ -87,17 +92,17 @@
         <translation type="unfinished">创建输出文件失败</translation>
     </message>
     <message>
-        <location filename="CreateBackup.cpp" line="276"/>
+        <location filename="CreateBackup.cpp" line="278"/>
         <source>Failed to create Info.plist file</source>
         <translation type="unfinished">创建Info.plist文件失败</translation>
     </message>
     <message>
-        <location filename="CreateBackup.cpp" line="306"/>
+        <location filename="CreateBackup.cpp" line="308"/>
         <source>Failed to create Status.plist file</source>
         <translation type="unfinished">创建Status.plist文件失败</translation>
     </message>
     <message>
-        <location filename="CreateBackup.cpp" line="360"/>
+        <location filename="CreateBackup.cpp" line="362"/>
         <source>Failed to create Manifest.plist file</source>
         <translation type="unfinished">创建Manifest.plist文件失败</translation>
     </message>
@@ -157,6 +162,64 @@
         <location filename="page/T_Apply.qml" line="85"/>
         <source>If you&apos;re having trouble with your device</source>
         <translation type="unfinished">如果设备遇到问题：</translation>
+    </message>
+</context>
+<context>
+    <name>T_Help</name>
+    <message>
+        <source>Apply</source>
+        <translation type="obsolete">应用</translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="5"/>
+        <source>Q&amp;A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="12"/>
+        <source>Q:It is any bugs ?</source>
+        <translation type="unfinished">Q:目前有什么bug呢？</translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="15"/>
+        <source>Sure Bugs include:
+1、Albums can&apos;t be synced(iOS15)
+2、Sleep data is not visible(iOS15)
+3、The new watch face is not visible on the iPhone APP
+4、Motion tracking and map navigation synchronization are not available
+5、Watch screenshots are not available(only iOSX no match Watch OSX)</source>
+        <translation type="unfinished">1、无法同步相册（iOS15）
+2、睡眠健康数据不可见（iOS15）
+3、新watchos的表盘在iPhone软件上不可见（iOS15、16）
+4、部分用户运动跟踪不可用
+5、安装app转圈是Apple抽风问题，重启可以解决
+6、手表截图功能不可用（跨大版本 bug）</translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="19"/>
+        <source>Q:if I still can&apos;t pair Watch after using the tool , What can I do ?</source>
+        <translation type="unfinished">Q:大成功之后依旧无法配对？</translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="22"/>
+        <source>1、You can try Higher max value
+2、You can try Del the watch backup
+Open Settings App on your iPhone
+Find General -&gt; Storage -&gt; Watch App -&gt; delete All watch backup then repair again</source>
+        <translation type="unfinished">1、尝试更高的max值
+2、尝试删除watch的备份
+打开iPhone上的设置
+找到通用-&gt;储存空间-&gt;Watch App-&gt;删除全部Wactch的备份文件，然后重新配对</translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="26"/>
+        <source>Q:How can I reset my device ?</source>
+        <translation type="unfinished">Q:怎么还原被修改的文件?</translation>
+    </message>
+    <message>
+        <location filename="page/T_Help.qml" line="29"/>
+        <source>You can go to Apply page and Click the reset button</source>
+        <translation type="unfinished">在应用界面直接点击还原全部更改按钮即可</translation>
     </message>
 </context>
 <context>
@@ -438,16 +501,21 @@ please contact the authors</source>
     </message>
     <message>
         <location filename="helper/deviceLink.cpp" line="491"/>
-        <source>Error!! Please Remove All your MDM File!!</source>
-        <translation type="unfinished">错误！！请移除所有文件后再试一次</translation>
+        <source>Error!! need to enter Password and unlock your device</source>
+        <translation type="unfinished">错误！！设备处于密码保护状态，需要手动输入密码解锁设备后再试</translation>
     </message>
     <message>
         <location filename="helper/deviceLink.cpp" line="495"/>
-        <source>Error!! NOT Support For below iOS 15.2!!</source>
-        <translation type="unfinished">错误！！不支持iOS15.2以下的设备</translation>
+        <source>Error!! Please Remove All your MDM File!!</source>
+        <translation type="unfinished">错误！！请移除所有描述文件后再试一次</translation>
     </message>
     <message>
         <location filename="helper/deviceLink.cpp" line="499"/>
+        <source>Error!! NOT Support For below iOS 15.2!!</source>
+        <translation type="unfinished">错误！！暂不支持iOS15.2以下的设备</translation>
+    </message>
+    <message>
+        <location filename="helper/deviceLink.cpp" line="503"/>
         <source>BIG Successful 
  Your Device will be restart after a min 
  Dont worry it will be fine after restart!</source>

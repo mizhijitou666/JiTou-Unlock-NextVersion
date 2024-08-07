@@ -83,7 +83,6 @@ else ()
             helper/LogHelper.h
             helper/LogHelper.cpp
             CreateBackup.cpp CreateBackup.h
-
     )
 endif ()
 

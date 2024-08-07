@@ -23,5 +23,6 @@
         <file>page/T_Apply.qml</file>
         <file>res/iPhone_NoConntect.png</file>
         <file>res/iPhone_Conntect.png</file>
+        <file>page/T_Help.qml</file>
     </qresource>
 </RCC>

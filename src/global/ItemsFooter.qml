@@ -10,7 +10,18 @@ FluObject{
     id:footer_items
 
     FluPaneItemSeparator{}
-
+    FluPaneItem{
+        title:qsTr("Q&A")
+        icon:FluentIcons.ReadingMode
+        url:"qrc:/page/T_Help.qml"
+        onTap:{
+            navigationView.push(url)
+        }
+    }
+    FluPaneItemSeparator{
+        spacing:10
+        size:1
+    }
     FluPaneItem{
         title:qsTr("Settings")
         icon:FluentIcons.Settings

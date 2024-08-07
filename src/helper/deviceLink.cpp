@@ -486,6 +486,10 @@ void currentWorkspace::restoreBackupToDevice(QString uuid, const std::string & b
         {
             LogHelper::getInstance()->addlog(tr("Error!! Please Close \"Find my iphone\"!!"));
         }
+        else if (output.contains("Password protected"))
+        {
+            LogHelper::getInstance()->addlog(tr("Error!! need to enter Password and unlock your device"));
+        }
         else if (output.contains("Code 1"))
         {
             LogHelper::getInstance()->addlog(tr("Error!! Please Remove All your MDM File!!"));
