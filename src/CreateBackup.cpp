@@ -267,8 +267,6 @@ bool CreateBackup::createBackup(const QString& indir, const QString& outdir)
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Product Version</key>
-    <string>19.0</string>
 </dict>
 </plist>
 )";
