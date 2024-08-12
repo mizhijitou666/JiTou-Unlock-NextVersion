@@ -263,11 +263,11 @@ FluScrollablePage{
         cellWidth: 230
         model:ListModel{
             ListElement{image:"qrc:/res/i4_logo.png";title:qsTr("i4 Tools");desc:qsTr("A tool for connecting \niPhone to Windows");url: "https://www.i4.cn/"}
-            ListElement{image:"qrc:/res/bilibili_logo.png";title:qsTr("Bilibili video");desc:qsTr("A video to help use of \nthe software");url: "https://www.bilibili.com/video/BV1xa4y1z7PA/"}
-            ListElement{image:"qrc:/res/coolapk_logo.png";title:qsTr("Coolapk course");desc:qsTr("A Graphics and texts to help use the software");url: "https://www.coolapk.com/feed/49645784"}
+            ListElement{image:"qrc:/res/bilibili_logo.png";title:qsTr("Bilibili video");desc:qsTr("A video to help use of \nthe software");url: "https://www.bilibili.com/video/BV1GFeAegEEj/"}
+            ListElement{image:"qrc:/res/coolapk_logo.png";title:qsTr("Coolapk course");desc:qsTr("A Graphics and texts to help use the software");url: "https://www.coolapk.com/feed/58160978"}
             ListElement{image:"qrc:/res/QQ_logo.png";title:qsTr("QQ Group Chats");desc:qsTr("QQ Group Chats \nnumber: 665784074");url: "https://qm.qq.com/q/jck4QLs5sk"}
             ListElement{image:"qrc:/res/mizhijitou_qq.jpg";title:qsTr("QQ");desc:qsTr("QQ number : \n1249863413");url: "https://qm.qq.com/q/9LXTVULnuU"}
-            ListElement{image:"qrc:/res/mizhijitou_wechat.jpg";title:qsTr("Wechat");desc:qsTr("Wechat ID : Jiejie_Cool");url:""}
+            ListElement{image:"qrc:/res/mizhijitou_wechat.jpg";title:qsTr("Wechat");desc:qsTr("Wechat ID : mizhijitou");url:""}
         }
         interactive: false
         delegate: com_item

@@ -244,10 +244,6 @@ Backup Generator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wechat ID : Jiejie_Cool</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>QQ Group Chats 
 number: 665784074</source>
         <translation type="unfinished"></translation>
@@ -265,6 +261,10 @@ iPhone to Windows</source>
     <message>
         <source>A video to help use of 
 the software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wechat ID : mizhijitou</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

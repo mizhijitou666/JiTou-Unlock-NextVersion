@@ -313,14 +313,18 @@ Backup Generator</source>
         <translation type="unfinished">微信</translation>
     </message>
     <message>
+        <location filename="page/T_Home.qml" line="270"/>
+        <source>Wechat ID : mizhijitou</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="page/T_Home.qml" line="267"/>
         <source>A Graphics and texts to help use the software</source>
         <translation type="unfinished">图文教程</translation>
     </message>
     <message>
-        <location filename="page/T_Home.qml" line="270"/>
         <source>Wechat ID : Jiejie_Cool</source>
-        <translation type="unfinished">微信id：Jiejie_Cool</translation>
+        <translation type="obsolete">微信id：Jiejie_Cool</translation>
     </message>
     <message>
         <location filename="page/T_Home.qml" line="268"/>

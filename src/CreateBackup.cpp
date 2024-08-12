@@ -268,7 +268,7 @@ bool CreateBackup::createBackup(const QString& indir, const QString& outdir)
 <plist version="1.0">
 <dict>
     <key>Product Version</key>
-    <string>15.0</string>
+    <string>19.0</string>
 </dict>
 </plist>
 )";
