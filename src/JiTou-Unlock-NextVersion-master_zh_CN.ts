@@ -92,17 +92,17 @@
         <translation type="unfinished">创建输出文件失败</translation>
     </message>
     <message>
-        <location filename="CreateBackup.cpp" line="278"/>
+        <location filename="CreateBackup.cpp" line="276"/>
         <source>Failed to create Info.plist file</source>
         <translation type="unfinished">创建Info.plist文件失败</translation>
     </message>
     <message>
-        <location filename="CreateBackup.cpp" line="308"/>
+        <location filename="CreateBackup.cpp" line="306"/>
         <source>Failed to create Status.plist file</source>
         <translation type="unfinished">创建Status.plist文件失败</translation>
     </message>
     <message>
-        <location filename="CreateBackup.cpp" line="362"/>
+        <location filename="CreateBackup.cpp" line="360"/>
         <source>Failed to create Manifest.plist file</source>
         <translation type="unfinished">创建Manifest.plist文件失败</translation>
     </message>

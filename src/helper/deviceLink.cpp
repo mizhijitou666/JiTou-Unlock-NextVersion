@@ -402,6 +402,7 @@ void currentWorkspace::removeTweaks(QString uuid) {
     else
     {
         LogHelper::getInstance()->addlog(tr("Create restore workspace fail"));
+        this->set_isRunning(false);
         return;
     }
 
@@ -412,6 +413,7 @@ void currentWorkspace::removeTweaks(QString uuid) {
         //
     } else {
         LogHelper::getInstance()->addlog(tr("Fail to CreateBackup file"));
+        this->set_isRunning(false);
         return;
     }
 
@@ -442,6 +444,7 @@ void currentWorkspace::applyTweaks(QString uuid)
         else
         {
             LogHelper::getInstance()->addlog(tr("Create restore workspace fail"));
+            this->set_isRunning(false);
             return;
         }
     }
@@ -453,6 +456,7 @@ void currentWorkspace::applyTweaks(QString uuid)
         //
     } else {
         LogHelper::getInstance()->addlog(tr("Fail to CreateBackup file"));
+        this->set_isRunning(false);
         return;
     }
 
